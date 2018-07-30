@@ -37,12 +37,30 @@ export default class VectorSpinner360 extends React.Component {
     const { percentage } = this.state;
     const LENGTH = Math.PI*2;
     const thetaLength = LENGTH / 100 * percentage;
+    const innerRadius = 95;
+    const outerRadius = 100;
 
     return (
       <View style={styles.panel}>
         <Ring
-          innerRadius={90}
-          outerRadius={100}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
+          thetaSegments={100}
+          phiSegments={1}
+          thetaStart={Math.PI * 3/2}
+          thetaLength={LENGTH}
+          materialParameters={{
+            color: 0xfaecc7,
+            side: THREE.DoubleSide,
+            opacity: 0.5,
+          }}
+          style={{
+            transform: [{ rotateY: 180 }]
+          }}
+        />
+        <Ring
+          innerRadius={innerRadius-1}
+          outerRadius={outerRadius}
           thetaSegments={100}
           phiSegments={1}
           thetaStart={Math.PI * 3/2}
